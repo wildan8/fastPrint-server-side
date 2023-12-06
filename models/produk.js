@@ -20,7 +20,7 @@ const produks = db.define('produk',{
     allowNull: false
    }
 });
-produks.belongsTo(kategori, { foreignKey: 'kategori_id', as: 'Kategori' });
+produks.belongsTo(kategori, { foreignKey: 'kategori_id', as: 'kategori' });
 produks.belongsTo(status, { foreignKey: 'status_id', as: 'status' });
 
 export default produks;

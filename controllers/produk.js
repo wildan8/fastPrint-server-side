@@ -30,6 +30,10 @@ export const getProduk = async (req, res) => {
       dbProduk = await produk.findAll({
         include: [
           {
+            model: kategori,
+            as: "kategori",
+          },
+          {
             model: status,
             as: "status",
             where: { nama_status },
@@ -37,7 +41,18 @@ export const getProduk = async (req, res) => {
         ],
       });
     } else {
-      dbProduk = await produk.findAll();
+      dbProduk = await produk.findAll({
+        include: [
+          {
+            model: kategori,
+            as: "kategori",
+          },
+          {
+            model: status,
+            as: "status",
+          },
+        ],
+      });
       nama_status = "semua produk";
     }
     res.status(200).json({
