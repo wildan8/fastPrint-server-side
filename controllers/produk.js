@@ -59,6 +59,12 @@ export const addProduk = async (req, res) => {
     if (!Number.isInteger(harga)) {
       return res.status(400).json({ error: "Harga harus berupa angka" });
     }
+    if (!kategori_id) {
+      return res.status(400).json({ error: "Pilih kategori terlebih dahulu" });
+    }
+    if (!status_id) {
+      return res.status(400).json({ error: "Pilih status terlebih dahulu" });
+    }
     const newDataProduk = {
       nama_produk: nama_produk,
       harga: harga,
@@ -98,6 +104,12 @@ export const updateProduk = async (req, res) => {
     }
     if (!Number.isInteger(formData.harga)) {
       return res.status(400).json({ error: "Harga harus berupa angka" });
+    }
+    if (!kategori_id) {
+      return res.status(400).json({ error: "Pilih kategori terlebih dahulu" });
+    }
+    if (!status_id) {
+      return res.status(400).json({ error: "Pilih status terlebih dahulu" });
     }
     const formatedProduk = {
       nama_produk: formData.nama_produk,
